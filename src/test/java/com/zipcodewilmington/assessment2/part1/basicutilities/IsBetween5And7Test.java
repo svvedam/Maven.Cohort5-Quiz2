@@ -7,9 +7,7 @@ import org.junit.Test;
 public class IsBetween5And7Test {
 
     @Test
-    public void test0() {
-        test(0, false);
-    }
+    public void test0() { test(0, false); }
 
     @Test
     public void test1() {
