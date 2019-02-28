@@ -1,39 +1,61 @@
 package com.zipcodewilmington.assessment2.part2;
 
-
+import java.util.Map;
 import java.util.TreeMap;
 
 public class Router {
-    public TreeMap<String,String> newMap;
+    public Map<String,String> newMap;
     public Router(){
-        newMap = new TreeMap<>();
+        newMap = new TreeMap<String,String>();
     }
     public void add(String path, String controller) {
          newMap.put(path,controller);
+        for(Map.Entry<String,String> entry : newMap.entrySet()){
+            if((entry.getKey()).equalsIgnoreCase("/users"));
+            controller = entry.getValue();
+        }
     }
 
     public Integer size() {
-        return null;
+        return newMap.size();
     }
 
     public String getController(String path) {
-        return null;
+        String returnController="";
+        for(Map.Entry<String,String> entry : newMap.entrySet()){
+            if((entry.getKey()).equalsIgnoreCase("/users"));
+            returnController = entry.getValue();
+        }
+        return returnController;
     }
 
     public void update(String path, String studentController) {
+        for(Map.Entry<String,String> entry : newMap.entrySet()){
+            if((entry.getKey()).equalsIgnoreCase("/users"));
+            newMap.put(entry.getKey(),studentController);
+        }
     }
 
     public void remove(String path) {
-    }
-    public String toString(){return "a";}
-/*        StringBuffer sbr = new StringBuffer();
-        for(int i = newMap.size();i<){
 
+        for(Map.Entry<String,String> entry : newMap.entrySet()){
+            String key = entry.getKey();
+            if((entry.getKey()).equalsIgnoreCase("/users"));
+            newMap.remove(key);
+            if(newMap.size()==0)
+                newMap.put("",null);
         }
+    }
+    public String toString() {
+        StringBuffer sbr = new StringBuffer();
 
-        "/instructor -> InstructorController\n"
-                + "/students -> StudentController\n"
-                + "/users -> UserController\n";*/
-
+        for(Map.Entry<String,String> entry : newMap.entrySet()){
+            sbr.append(entry.getKey());
+            sbr.append(" -> ");
+            sbr.append(entry.getValue());
+            sbr.append("\n");
+        }
+        return sbr.toString();
+    }
 
 }
